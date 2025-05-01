@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6vhd0weljnrb"]
+
+[ext_resource type="Script" uid="uid://fmr4m22qvhbq" path="res://scripts/lexicon.gd" id="1_pb84f"]
+
+[node name="Lexicon" type="Node"]
+script = ExtResource("1_pb84f")
+metadata/_custom_type_script = "uid://fmr4m22qvhbq"
