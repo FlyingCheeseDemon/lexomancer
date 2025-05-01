@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://denb5difwggyn"]
+
+[ext_resource type="Script" uid="uid://b12gowi12t1pg" path="res://scripts/token.gd" id="1_7438t"]
+
+[node name="Token" type="Node"]
+script = ExtResource("1_7438t")
+metadata/_custom_type_script = "uid://b12gowi12t1pg"

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvs8yeavmjf48"]
+
+[ext_resource type="Script" uid="uid://brabg3itdxf03" path="res://scripts/caster.gd" id="1_h5sgl"]
+
+[node name="Caster" type="Node"]
+script = ExtResource("1_h5sgl")
+metadata/_custom_type_script = "uid://brabg3itdxf03"
