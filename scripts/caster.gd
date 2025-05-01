@@ -10,3 +10,11 @@ static func constructor() -> Caster:
 	var obj = self_scene.instantiate()
 	obj.lexicon = Lexicon.constructor()
 	return obj
+
+func draw_and_play() -> void:
+	# for debug purposes only
+	var card = lexicon.draw()
+	if card != null:
+		card.play()
+	else:
+		print(":(")
