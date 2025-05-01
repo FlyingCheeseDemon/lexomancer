@@ -10,5 +10,5 @@ static func constructor(name: String) -> Token:
 	obj.token_name = name
 	return obj
 
-func played():
+func play():
 	print(token_name)
