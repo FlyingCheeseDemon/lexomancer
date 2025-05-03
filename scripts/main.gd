@@ -9,13 +9,9 @@ func _ready() -> void:
 	var token4 = Token.constructor("4")
 	var card
 	
-	TheWizard.lexicon.add_token(token1)
+	TheWizard.add_card_top_deck(token1)
 	token1.token_name = "3"
-	TheWizard.lexicon.add_token(token1)
+	TheWizard.add_card_top_deck(token1)
 	
-	TheWizard.draw_and_play()
-	TheWizard.draw_and_play()
-	TheWizard.draw_and_play()
-	TheWizard.draw_and_play()
-	TheWizard.draw_and_play()
-	TheWizard.draw_and_play()
+	TheWizard.draw(5)
+	print(TheWizard.hand)

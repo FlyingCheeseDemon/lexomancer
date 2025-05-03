@@ -4,6 +4,7 @@ class_name Token
 const self_scene = preload("res://scenes/token.tscn")
 
 var token_name = ""
+var token_type = ""
 
 static func constructor(name: String) -> Token:
 	var obj = self_scene.instantiate()
