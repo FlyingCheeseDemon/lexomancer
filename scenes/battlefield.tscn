@@ -1,0 +1,22 @@
+[gd_scene format=4 uid="uid://cqgw7o6k7o66q"]
+
+[ext_resource type="Texture2D" uid="uid://cs6jgpvkae5rr" path="res://assets/battlefield_tile.png" id="1_5rve1"]
+[ext_resource type="Script" uid="uid://dbychyykng0dv" path="res://scripts/battlefield.gd" id="1_d5hba"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d5hba"]
+texture = ExtResource("1_5rve1")
+texture_region_size = Vector2i(50, 50)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_j68fe"]
+tile_size = Vector2i(50, 50)
+sources/0 = SubResource("TileSetAtlasSource_d5hba")
+
+[node name="Battlefield" type="Node2D" unique_id=1629556424]
+script = ExtResource("1_d5hba")
+
+[node name="Battlefield" type="TileMapLayer" parent="." unique_id=1113238075]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAEAAEAAAAAAAAAAAAEAAIAAAAAAAAAAAAEAAMAAAAAAAAAAAAEAAQAAAAAAAAAAAADAAQAAAAAAAAAAAACAAQAAAAAAAAAAAABAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAACAAIAAAAAAAAAAAADAAIAAAAAAAAAAAACAAMAAAAAAAAAAAABAAIAAAAAAAAAAAADAAEAAAAAAAAAAAADAAMAAAAAAAAAAAABAAMAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_j68fe")
+
+[node name="Entities" type="Node2D" parent="." unique_id=434740394]

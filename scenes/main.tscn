@@ -1,6 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://buh4hp72vssha"]
+[gd_scene format=3 uid="uid://buh4hp72vssha"]
 
 [ext_resource type="Script" uid="uid://b2bv6fqlsvtbr" path="res://scripts/main.gd" id="1_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://cqgw7o6k7o66q" path="res://scenes/battlefield.tscn" id="2_0wfyh"]
 
-[node name="Node2D" type="Node2D"]
+[node name="main" type="Node" unique_id=879389967]
 script = ExtResource("1_0wfyh")
+
+[node name="GameField" type="CanvasLayer" parent="." unique_id=1961563478]
+
+[node name="ColorRect" type="ColorRect" parent="GameField" unique_id=851889393]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.23672003, 0.22440001, 0.33, 1)
+
+[node name="Battlefield" parent="GameField" unique_id=1894344196 instance=ExtResource("2_0wfyh")]
+position = Vector2(663, 47)
