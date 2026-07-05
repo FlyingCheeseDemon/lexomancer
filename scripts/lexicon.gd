@@ -13,5 +13,11 @@ static func constructor() -> Lexicon:
 func draw():
 	return token_list.pop_back()
 	
-func add_token(token: Token):
+func add_bottom_deck(token: Token):
 	token_list.push_front(token)
+	
+func add_top_deck(token: Token):
+	token_list.push_back(token)
+	
+func get_length() -> int:
+	return token_list.size()

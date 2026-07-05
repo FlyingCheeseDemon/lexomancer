@@ -5,16 +5,23 @@ class_name Caster
 const self_scene = preload("res://scenes/caster.tscn")
 
 var lexicon
+var hand
 
 static func constructor() -> Caster:
 	var obj = self_scene.instantiate()
-	obj.lexicon = Lexicon.constructor()
+	obj.lexicon = []
+	obj.hand = []
 	return obj
 
-func draw_and_play() -> void:
-	# for debug purposes only
-	var card = lexicon.draw()
-	if card != null:
-		card.play()
-	else:
-		print(":(")
+func add_card_bottom_deck(token: Token):
+	lexicon.push_front(token)
+	
+func add_card_top_deck(token: Token):
+	lexicon.push_back(token)
+
+func draw(n: int) -> void:
+	for i in n:
+		if lexicon.size() != 0:
+			hand.push_front(lexicon.pop_back())
+		else:
+			print("deck empty, cannot draw :(")
