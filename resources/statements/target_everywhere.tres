@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Statement" format=3 uid="uid://bspu4rn4aobrj"]
+
+[ext_resource type="Script" uid="uid://bb7ks18k2laji" path="res://scripts/statement.gd" id="1_bxskl"]
+
+[resource]
+script = ExtResource("1_bxskl")
+type = 1
+name = "everywhere"
+title = "EVERYWHERE"
+text = "EVERYWHERE!!!"
+metadata/_custom_type_script = "uid://bb7ks18k2laji"

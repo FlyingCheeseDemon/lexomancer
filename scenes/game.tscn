@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://b0c5ckvsdyg6g"]
+
+[ext_resource type="Script" uid="uid://btvmd6wi06kp0" path="res://scenes/game.gd" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://cqgw7o6k7o66q" path="res://scenes/battlefield.tscn" id="2_yqjtg"]
+
+[node name="Game" type="Node2D" unique_id=966945714]
+script = ExtResource("1_uwrxv")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=444497757]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.32143465, 0.45916796, 0.5483141, 1)
+
+[node name="Battlefield" parent="." unique_id=1629556424 instance=ExtResource("2_yqjtg")]
+position = Vector2(454, 196)
