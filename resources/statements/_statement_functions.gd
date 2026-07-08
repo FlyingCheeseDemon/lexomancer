@@ -1,6 +1,6 @@
 class_name StatementFunctions
 
-static func execute_fireball(_gamestate:Game,self_statement:Statement) -> Callable:
+static func execute_fireball(_gamestate:Game,_self_statement:Statement) -> Callable:
 	return fireball
 	
 static func fireball(battlefield:Battlefield,target:Vector2i) -> void:
@@ -8,7 +8,7 @@ static func fireball(battlefield:Battlefield,target:Vector2i) -> void:
 	if entity:
 		entity.change_health(-5)
 
-static func execute_spell(gamestate:Game,self_statement:Statement) -> void:
+static func execute_spell1(gamestate:Game,self_statement:Statement) -> void:
 	var effect:Statement = self_statement.substatement_pointers[0]
 	var target:Statement = self_statement.substatement_pointers[1]
 	

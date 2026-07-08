@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b4nnkfvvchgv0"]
 
-[ext_resource type="Script" uid="uid://rx5jms7q48d6" path="res://scripts/statement_manager.gd" id="1_kn10m"]
+[ext_resource type="Script" uid="uid://rx5jms7q48d6" path="res://scripts/statememt_manager.gd" id="1_kn10m"]
 
 [node name="StatementManager" type="Node" unique_id=1310315968]
 script = ExtResource("1_kn10m")

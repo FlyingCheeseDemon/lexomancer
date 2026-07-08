@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://cognekn5nmfvh"]
+
+[ext_resource type="Shader" uid="uid://ceqy70gv27ccb" path="res://assets/shaders/health_bar.gdshader" id="1_1bvlm"]
+[ext_resource type="Script" uid="uid://r7tj2hns4j3g" path="res://scripts/health_bar.gd" id="1_y3kqx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_chlj7"]
+resource_local_to_scene = true
+shader = ExtResource("1_1bvlm")
+shader_parameter/good_color = Color(0.14999998, 1, 0, 1)
+shader_parameter/medium_color = Color(0.87142205, 0.61136544, 0, 1)
+shader_parameter/bad_color = Color(0.8141954, 0, 0.054987118, 1)
+shader_parameter/good_threshold = 50.0
+shader_parameter/bad_threshold = 30.0
+
+[sub_resource type="Gradient" id="Gradient_y3kqx"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_b2wtg"]
+gradient = SubResource("Gradient_y3kqx")
+
+[node name="HealthBar" type="Node2D" unique_id=1489020646]
+script = ExtResource("1_y3kqx")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1762734902]
+offset_left = -25.0
+offset_top = 10.0
+offset_right = 25.0
+offset_bottom = 19.0
+
+[node name="ColorRect" type="ColorRect" parent="CenterContainer" unique_id=251497434]
+custom_minimum_size = Vector2(40, 7)
+layout_mode = 2
+
+[node name="ColorRect2" type="TextureRect" parent="CenterContainer" unique_id=1023458382]
+material = SubResource("ShaderMaterial_chlj7")
+custom_minimum_size = Vector2(36, 5)
+layout_mode = 2
+texture = SubResource("GradientTexture1D_b2wtg")
+expand_mode = 2

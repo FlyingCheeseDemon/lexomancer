@@ -1,11 +1,11 @@
-[gd_resource type="Resource" script_class="Statement" format=3 uid="uid://b5msnipotq6tr"]
+[gd_resource type="Resource" script_class="StatementData" format=3 uid="uid://b5msnipotq6tr"]
 
-[ext_resource type="Script" uid="uid://bb7ks18k2laji" path="res://scripts/statement.gd" id="1_sjyo4"]
+[ext_resource type="Script" uid="uid://bb7ks18k2laji" path="res://scripts/statement_data.gd" id="1_sjyo4"]
 
 [resource]
 script = ExtResource("1_sjyo4")
-name = "spell"
-title = "Spell"
+name = "spell1"
+title = "Lvl 1 Spell"
 text = "I cast [[0]] at [[1]]"
 substatement_types = Array[int]([2, 1])
 metadata/_custom_type_script = "uid://bb7ks18k2laji"
