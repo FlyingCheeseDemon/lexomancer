@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://cqgw7o6k7o66q"]
 
-[ext_resource type="Texture2D" uid="uid://cs6jgpvkae5rr" path="res://assets/battlefield_tile.png" id="1_5rve1"]
+[ext_resource type="Texture2D" uid="uid://cs6jgpvkae5rr" path="res://assets/textures/battlefield_tile.png" id="1_5rve1"]
 [ext_resource type="Script" uid="uid://dbychyykng0dv" path="res://scripts/battlefield.gd" id="1_d5hba"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d5hba"]

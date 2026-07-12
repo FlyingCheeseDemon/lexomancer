@@ -37,7 +37,8 @@ func change_health(difference:int) -> void:
 	else:
 		self.current_health = min(self.current_health,self.data.max_health)
 	health_bar.set_health(float(self.current_health)/float(self.data.max_health))
-	print("ouch! " + str(self.current_health) + "/" + str(self.data.max_health))
+	var number_particle = NumberParticle.constructor(difference)
+	self.add_child(number_particle)
 
 func die() -> void:
 	print("I died!")

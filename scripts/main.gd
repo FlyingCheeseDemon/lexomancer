@@ -4,6 +4,7 @@ extends Node
 @onready var battlefield = game.battlefield
 @onready var statement_manager:StatementManager = $StatementManager
 @onready var entity_manager:EntityManager = $EntityManager
+@onready var hand:Hand = $CardAreas.hand
 
 func _ready() -> void:
 	var enemy:Entity
@@ -22,5 +23,5 @@ func _ready() -> void:
 	spell.clear_substatement(1)
 	spell.set_substatement(every,1)
 	spell.execute(game)
-
+	
 	##var TheWizard = Caster.constructor()

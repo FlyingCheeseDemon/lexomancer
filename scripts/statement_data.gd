@@ -4,6 +4,7 @@ class_name StatementData
 @export var type:ENUMS.ST_TYPES
 @export var name:String
 @export var title:String
+@export var artwork:Texture2D
 
 @export var text:String
 

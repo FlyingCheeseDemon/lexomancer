@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="StatementData" format=3 uid="uid://b5msnipotq6tr"]
+
+[ext_resource type="Texture2D" uid="uid://ekyttioo3u7r" path="res://assets/textures/cards/spell1.png" id="1_rpmh6"]
+[ext_resource type="Script" uid="uid://bb7ks18k2laji" path="res://scripts/statement_data.gd" id="2_vqy2e"]
+
+[resource]
+script = ExtResource("2_vqy2e")
+name = "spell1"
+title = "Spell"
+artwork = ExtResource("1_rpmh6")
+text = "I cast %0 at %1"
+substatement_types = Array[int]([2, 1])
+metadata/_custom_type_script = "uid://bb7ks18k2laji"

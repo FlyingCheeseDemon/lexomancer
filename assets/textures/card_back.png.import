@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qshc0ddvqh4u"
-path="res://.godot/imported/pink_slime.png-3c3d47714419b0be94cd31de262d6be4.ctex"
+uid="uid://dyrwbfgmee37o"
+path="res://.godot/imported/card_back.png-29af5e8f9d852f6f8765661517c217ca.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pink_slime.png"
-dest_files=["res://.godot/imported/pink_slime.png-3c3d47714419b0be94cd31de262d6be4.ctex"]
+source_file="res://assets/textures/card_back.png"
+dest_files=["res://.godot/imported/card_back.png-29af5e8f9d852f6f8765661517c217ca.ctex"]
 
 [params]
 

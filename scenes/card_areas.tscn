@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://c3mrkgdfskaen"]
+
+[ext_resource type="Script" uid="uid://lvehmd4pbisu" path="res://scripts/hand.gd" id="1_h87tf"]
+[ext_resource type="Script" uid="uid://ben6rs8o427rg" path="res://scripts/card_areas.gd" id="1_hhpnw"]
+[ext_resource type="PackedScene" uid="uid://b4nnkfvvchgv0" path="res://scenes/statement_manager.tscn" id="2_v8m38"]
+[ext_resource type="Texture2D" uid="uid://dyrwbfgmee37o" path="res://assets/textures/card_back.png" id="3_ug4go"]
+[ext_resource type="Script" uid="uid://dcn44ex6xaejy" path="res://scripts/deck.gd" id="4_lttgl"]
+[ext_resource type="Script" uid="uid://caob5qcnhdb83" path="res://scripts/discard.gd" id="5_i61ut"]
+
+[node name="CardAreas" type="CanvasLayer" unique_id=1683924763]
+script = ExtResource("1_hhpnw")
+
+[node name="StatementManager" parent="." unique_id=1310315968 instance=ExtResource("2_v8m38")]
+
+[node name="Hand" type="HBoxContainer" parent="." unique_id=1281874753]
+offset_left = 200.0
+offset_top = 466.0
+offset_right = 943.0
+offset_bottom = 647.0
+alignment = 1
+script = ExtResource("1_h87tf")
+
+[node name="Deck" type="TextureRect" parent="." unique_id=1590469026]
+offset_left = 17.0
+offset_top = 430.0
+offset_right = 167.0
+offset_bottom = 630.0
+texture = ExtResource("3_ug4go")
+stretch_mode = 3
+script = ExtResource("4_lttgl")
+
+[node name="MarginContainer" type="MarginContainer" parent="Deck" unique_id=794930178]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="Deck/MarginContainer" unique_id=2022066444]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "10"
+horizontal_alignment = 1
+
+[node name="Discard" type="TextureRect" parent="." unique_id=918038921]
+offset_left = 980.0
+offset_top = 432.0
+offset_right = 1130.0
+offset_bottom = 632.0
+texture = ExtResource("3_ug4go")
+script = ExtResource("5_i61ut")
+
+[node name="MarginContainer" type="MarginContainer" parent="Discard" unique_id=1188751569]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="Discard/MarginContainer" unique_id=895785692]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "10"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="ColorRect" parent="." unique_id=639822152]
+offset_left = 27.0
+offset_top = 17.0
+offset_right = 473.0
+offset_bottom = 405.0
+color = Color(0.60400695, 0.70245564, 0.8153076, 1)

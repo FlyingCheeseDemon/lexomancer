@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cs6jgpvkae5rr"
-path="res://.godot/imported/battlefield_tile.png-67a9f5873b5fb4b079b88265951fd29d.ctex"
+uid="uid://ekyttioo3u7r"
+path="res://.godot/imported/spell1.png-b7e5382c752454382aae44e2cad0c730.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/battlefield_tile.png"
-dest_files=["res://.godot/imported/battlefield_tile.png-67a9f5873b5fb4b079b88265951fd29d.ctex"]
+source_file="res://assets/textures/cards/spell1.png"
+dest_files=["res://.godot/imported/spell1.png-b7e5382c752454382aae44e2cad0c730.ctex"]
 
 [params]
 

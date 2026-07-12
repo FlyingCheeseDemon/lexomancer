@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ciurbk0imxjq8" path="res://scenes/entity_manager.tscn" id="2_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://b4nnkfvvchgv0" path="res://scenes/statement_manager.tscn" id="2_sugp2"]
 [ext_resource type="PackedScene" uid="uid://b0c5ckvsdyg6g" path="res://scenes/game.tscn" id="3_sugp2"]
+[ext_resource type="PackedScene" uid="uid://c3mrkgdfskaen" path="res://scenes/card_areas.tscn" id="5_tbgi4"]
 
 [node name="main" type="Node" unique_id=879389967]
 script = ExtResource("1_0wfyh")
@@ -15,3 +16,5 @@ script = ExtResource("1_0wfyh")
 [node name="GameField" type="CanvasLayer" parent="." unique_id=1961563478]
 
 [node name="Game" parent="GameField" unique_id=966945714 instance=ExtResource("3_sugp2")]
+
+[node name="CardAreas" parent="." unique_id=1683924763 instance=ExtResource("5_tbgi4")]

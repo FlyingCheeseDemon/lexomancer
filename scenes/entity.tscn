@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://co55gbeiru46m"]
 
 [ext_resource type="Script" uid="uid://bojio3f54hv4n" path="res://scripts/entity.gd" id="1_gr72c"]
-[ext_resource type="Texture2D" uid="uid://cs6jgpvkae5rr" path="res://assets/battlefield_tile.png" id="1_m0cyi"]
+[ext_resource type="Texture2D" uid="uid://cs6jgpvkae5rr" path="res://assets/textures/battlefield_tile.png" id="1_m0cyi"]
 [ext_resource type="PackedScene" uid="uid://cognekn5nmfvh" path="res://scenes/health_bar.tscn" id="2_m0cyi"]
 
 [node name="Node2D" type="Sprite2D" unique_id=51409378]

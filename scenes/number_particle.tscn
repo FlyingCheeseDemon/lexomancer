@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://dvjg0tts0r0u1"]
+
+[ext_resource type="Script" uid="uid://c5aqq2ur8t44n" path="res://scripts/number_particle.gd" id="1_4chcl"]
+
+[sub_resource type="Curve2D" id="Curve2D_4chcl"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -14, 9, 0, 0, 0, 0, -11, 0, 0, 0, 0, 0, -18, -3, 0, 0, 0, 0, -11, -15)
+}
+point_count = 4
+
+[node name="NumberParticle" type="Node2D" unique_id=2057835656]
+script = ExtResource("1_4chcl")
+
+[node name="Path2D" type="Path2D" parent="." unique_id=464369608]
+position = Vector2(15, -23)
+curve = SubResource("Curve2D_4chcl")
+
+[node name="NumberLabelContainer" type="PathFollow2D" parent="Path2D" unique_id=1615607099]
+position = Vector2(-14, 9)
+rotation = -1.5707964
+rotates = false
+loop = false
+
+[node name="NumberLabel" type="Label" parent="Path2D/NumberLabelContainer" unique_id=472896779]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 13.0
+offset_top = -8.999999
+offset_right = 32.0
+offset_bottom = 14.000001
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.5707964
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1

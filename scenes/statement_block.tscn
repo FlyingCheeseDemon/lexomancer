@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://c0by51sty1a8c"]
+
+[ext_resource type="Script" uid="uid://by300s47rnr3u" path="res://scripts/statement_block.gd" id="1_jg8uj"]
+
+[node name="StatementBlock" type="HFlowContainer" unique_id=1812121764]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jg8uj")

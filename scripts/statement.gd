@@ -32,7 +32,7 @@ func clear_substatement(position:int) -> Statement:
 		self.substatement_pointers[position] = null
 		return temp
 
-func execute(game:Game):
+func execute(game:Game): # the return type for this depends on the type
 	for i in range(len(self.substatement_pointers)):
 		assert(self.substatement_pointers[i],\
 			"STATEMENT ERROR: Missing statement " + str(i) + " in " + self.data.title)
