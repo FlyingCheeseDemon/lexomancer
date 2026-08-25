@@ -5,7 +5,7 @@ class_name EntityManager
 var entity_dictionary:Dictionary = {}
 
 func initialize_entity_dict() -> void:
-	var dir := DirAccess.open("res://resources/entities")
+	var dir := DirAccess.open("res://1_resources/entities")
 	if dir == null:
 		printerr("Could not open folder")
 		return

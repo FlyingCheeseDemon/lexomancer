@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cpg7oyqbarwjm"]
+
+[ext_resource type="Script" uid="uid://m8636tkcak0o" path="res://cardgame/dummy_card.gd" id="1_abg7b"]
+
+[node name="DummyCard" type="ColorRect" unique_id=848095673]
+custom_minimum_size = Vector2(150, 200)
+anchors_preset = -1
+offset_bottom = 0.31199646
+mouse_filter = 1
+color = Color(1, 1, 1, 0)
+script = ExtResource("1_abg7b")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

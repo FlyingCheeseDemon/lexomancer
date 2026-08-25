@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://vtlirlrp3rwx"]
+
+[ext_resource type="Script" uid="uid://drk2noiq6o4ot" path="res://cardgame/card_ctrl.gd" id="1_b7ylr"]
+[ext_resource type="Texture2D" uid="uid://ckklsvog67c0w" path="res://cardgame/card_front.png" id="2_46px4"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ordsf"]
+size = Vector2(130, 100)
+
+[node name="Card" type="TextureRect" unique_id=502483117]
+offset_right = 150.0
+offset_bottom = 200.0
+pivot_offset = Vector2(75, 150)
+texture = ExtResource("2_46px4")
+script = ExtResource("1_b7ylr")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1248704887]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=729093460]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1457667270]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "CARD NAME"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer" unique_id=895275771]
+layout_mode = 2
+mouse_filter = 2
+texture = SubResource("PlaceholderTexture2D_ordsf")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer" unique_id=2049883435]
+custom_minimum_size = Vector2(130, 0)
+custom_maximum_size = Vector2(130, -1)
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+text = "Lorem ipsum dolor sit amet"
+autowrap_mode = 2
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

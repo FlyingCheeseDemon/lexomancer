@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cw1cl3xgfjuwm"]
+
+[ext_resource type="Script" uid="uid://dq5yxidaal36m" path="res://cardgame/card_area.gd" id="1_57rjx"]
+
+[node name="CardArea" type="ColorRect" unique_id=532460764]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -650.0
+offset_bottom = -363.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.51718444, 0.5171845, 0.51718444, 1)
+script = ExtResource("1_57rjx")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

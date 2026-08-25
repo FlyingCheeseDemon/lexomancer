@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cquf3w8x5gbrn"]
+
+[ext_resource type="Script" uid="uid://6deuxy7hmyo3" path="res://cardgame/drag_and_drop_handle.gd" id="1_uovwm"]
+
+[node name="DragAndDropHandle" type="Control" unique_id=1715192286]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("1_uovwm")

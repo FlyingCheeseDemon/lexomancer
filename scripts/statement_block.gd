@@ -19,14 +19,15 @@ func _ready() -> void:
 		self.add_child(sub_node)
 
 func generate_subnodes() -> Array[Control]:
-	var substrings:Array[String] = self.statement_node.data.text.split(" ")
+	var substrings:PackedStringArray = self.statement_node.data.text.split(" ")
 	var node_array:Array[Control] = []
 	var new_node:Control
 	for substring:String in substrings:
 		if substring[0] == "%":
+			var index = int(substring[1])
 			# the subnode is a container where we can drop in another one.
 			# to do: make a scene which has all the necessary plumbing
-			new_node = TextureRect.new()
+			new_node = StatementBlockReceiver.constructor(self.statement_node.substatement_types[index])
 		else:
 			new_node = Label.new()
 			new_node.text = substring

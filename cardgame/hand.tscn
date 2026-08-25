@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bacjnhvxc1bqc"]
+
+[ext_resource type="Script" uid="uid://by3uvl4bygmd1" path="res://cardgame/hand.gd" id="1_bwxdj"]
+
+[node name="Hand" type="HBoxContainer" unique_id=2129383725]
+custom_minimum_size = Vector2(700, 200)
+alignment = 1
+script = ExtResource("1_bwxdj")

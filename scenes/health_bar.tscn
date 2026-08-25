@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cognekn5nmfvh"]
 
-[ext_resource type="Shader" uid="uid://ceqy70gv27ccb" path="res://assets/shaders/health_bar.gdshader" id="1_1bvlm"]
+[ext_resource type="Shader" uid="uid://ceqy70gv27ccb" path="res://0_assets/shaders/health_bar.gdshader" id="1_1bvlm"]
 [ext_resource type="Script" uid="uid://r7tj2hns4j3g" path="res://scripts/health_bar.gd" id="1_y3kqx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_chlj7"]

@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://glmafit8fdi5"]
+
+[ext_resource type="PackedScene" uid="uid://bacjnhvxc1bqc" path="res://cardgame/hand.tscn" id="1_2mj4r"]
+[ext_resource type="Script" uid="uid://bqk12mx4xh6tu" path="res://cardgame/00_card_game.gd" id="1_on5rp"]
+[ext_resource type="PackedScene" uid="uid://xpeoqsl032ft" path="res://cardgame/card_pile.tscn" id="2_on5rp"]
+[ext_resource type="PackedScene" uid="uid://cquf3w8x5gbrn" path="res://cardgame/drag_and_drop_handle.tscn" id="4_sk8td"]
+[ext_resource type="PackedScene" uid="uid://cw1cl3xgfjuwm" path="res://cardgame/card_area.tscn" id="5_c1l7t"]
+
+[node name="CardGame" type="CanvasLayer" unique_id=1067415973]
+script = ExtResource("1_on5rp")
+
+[node name="Hand" parent="." unique_id=2129383725 instance=ExtResource("1_2mj4r")]
+offset_left = 226.0
+offset_top = 422.0
+offset_right = 926.0
+offset_bottom = 622.0
+theme_override_constants/separation = 4
+max_hand_size = 8
+max_width = 700
+standard_spacing = -40
+arch_angle = 15.0
+
+[node name="CardPile" parent="." unique_id=40699837 instance=ExtResource("2_on5rp")]
+offset_left = 73.0
+offset_top = 84.0
+offset_right = 223.0
+offset_bottom = 284.0
+
+[node name="CardArea" parent="." unique_id=532460764 instance=ExtResource("5_c1l7t")]
+offset_left = 525.0
+offset_top = 54.0
+offset_right = -125.0
+offset_bottom = -309.0
+
+[node name="DragAndDropHandle" parent="." unique_id=1715192286 instance=ExtResource("4_sk8td")]

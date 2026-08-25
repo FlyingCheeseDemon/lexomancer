@@ -5,7 +5,7 @@ class_name StatementManager
 var statement_dictionary:Dictionary = {}
 
 func initialize_statement_dict() -> void:
-	var dir := DirAccess.open("res://resources/statements")
+	var dir := DirAccess.open("res://1_resources/statements")
 	if dir == null:
 		printerr("Could not open folder")
 		return
