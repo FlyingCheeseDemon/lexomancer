@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="StatementData" format=3 uid="uid://bagei0gwieovg"]
+
+[ext_resource type="Script" uid="uid://bb7ks18k2laji" path="res://scripts/statement_data.gd" id="1_5qbjv"]
+
+[resource]
+script = ExtResource("1_5qbjv")
+name = "spell2"
+title = "Double spell"
+text = "cast %0 at %1 twice"
+metadata/_custom_type_script = "uid://bb7ks18k2laji"

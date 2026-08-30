@@ -11,26 +11,31 @@ extends CanvasLayer
 func _ready() -> void:
 	hand.connect("mouse_entered",_on_hand_mouse_enter.bind(hand))
 	hand.connect("mouse_exited",_on_hand_mouse_exit.bind(hand))
-	var fireball:Statement
+	var statement:Statement
 	var new_card:Card
 	for i in range(7):
-		fireball = statement_manager.get_statement_by_name("spell1")
-		new_card = Card.from_statement(fireball)
+		statement = statement_manager.get_statement_by_name("spell1")
+		new_card = Card.from_statement(statement)
 		deck.add_top_deck(new_card)
 		
 	for i in range(7):
-		fireball = statement_manager.get_statement_by_name("fireball")
-		new_card = Card.from_statement(fireball)
+		statement = statement_manager.get_statement_by_name("fireball")
+		new_card = Card.from_statement(statement)
 		deck.add_top_deck(new_card)
 		
-	for i in range(7):
-		fireball = statement_manager.get_statement_by_name("column_2")
-		new_card = Card.from_statement(fireball)
+	for i in range(5):
+		statement = statement_manager.get_statement_by_name("column_2")
+		new_card = Card.from_statement(statement)
 		deck.add_top_deck(new_card)
 		
 	for i in range(2):
-		fireball = statement_manager.get_statement_by_name("everywhere")
-		new_card = Card.from_statement(fireball)
+		statement = statement_manager.get_statement_by_name("everything")
+		new_card = Card.from_statement(statement)
+		deck.add_top_deck(new_card)
+		
+	for i in range(3):
+		statement = statement_manager.get_statement_by_name("and")
+		new_card = Card.from_statement(statement)
 		deck.add_top_deck(new_card)
 	
 	deck.shuffle()
@@ -43,11 +48,9 @@ func _ready() -> void:
 	
 func set_root_spell() -> void:
 	var root = statement_manager.get_statement_by_name("root")
-	var block = StatementBlock.constructor(root)
-	spell_book.add_child(block)
-	spell_book.root_node = block
 	spell_book.root = root
-	block.connect("statement_block_clicked",_on_statement_block_clicked)
+	root.connect("statement_receiver_clicked",_on_statement_receiver_clicked)
+	spell_book.update_visuals()
 
 func _on_hand_card_dragged_in_hand(card:CardCtrl,source_hand:Hand) -> void:
 	if not drag_drop.dragged_card:
@@ -86,23 +89,22 @@ func end_turn_card_management() -> void:
 		hand.add_card(card)
 	# redraw to ... idk 7?
 
-func add_statement_to_spellbook(target:StatementBlockReceiver, stat:Statement) -> void:
-	var block:StatementBlock = spell_book.add_statement(target, stat)
-	block.connect("statement_block_clicked",_on_statement_block_clicked)
+func add_statement_to_spellbook(target:Statement,index:int, stat:Statement) -> void:
+	spell_book.add_statement(target,index, stat)
+	stat.connect("statement_receiver_clicked",_on_statement_receiver_clicked)
 
-func _on_statement_block_clicked(clicked_block:StatementBlock,clicked_container:StatementBlockReceiver) -> void:
+func _on_statement_receiver_clicked(parent_statement:Statement,clicked_container:StatementBlockReceiver) -> void:
 	if not drag_drop.dragged_card:
 		return
 	
-	if drag_drop.dragged_card.card.statement_node.type != clicked_container.type:
-		print("Cannot put card of type " + str(drag_drop.dragged_card.card.statement_node.type) + " into slot of type " + str(clicked_container.type))
+	if drag_drop.dragged_card.card.statement.type != ENUMS.ST_TYPES.CONJUNCTION and drag_drop.dragged_card.card.statement.type != clicked_container.type:
+		print("Cannot put card of type " + str(drag_drop.dragged_card.card.statement.type) + " into slot of type " + str(clicked_container.type))
 		return
 	
-	self.add_statement_to_spellbook(clicked_container,drag_drop.dragged_card.card.statement_node)
-	discard.add_top_deck(drag_drop.dragged_card.card)
-	var temp = drag_drop.dragged_card
+	self.add_statement_to_spellbook(parent_statement,clicked_container.index,drag_drop.dragged_card.card.statement)
+	
+	discard.add_top_deck(Card.from_statement(Statement.constructor(drag_drop.dragged_card.card.statement.data)))
 	drag_drop.dragged_card = null
-	temp.queue_free()
 	
 func get_root_spell() -> Statement:
 	return spell_book.root

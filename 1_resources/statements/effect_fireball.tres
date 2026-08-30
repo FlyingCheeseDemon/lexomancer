@@ -7,5 +7,5 @@ script = ExtResource("1_jhchr")
 type = 2
 name = "fireball"
 title = "Fireball"
-text = "Fireball!"
+text = "fireball"
 metadata/_custom_type_script = "uid://bb7ks18k2laji"

@@ -27,10 +27,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="HFlowContainer" type="HFlowContainer" parent="SpellBook/MarginContainer" unique_id=766937273]
+layout_mode = 2
 
 [node name="DrawPile" parent="." unique_id=40699837 instance=ExtResource("4_lttgl")]
 offset_left = 27.0

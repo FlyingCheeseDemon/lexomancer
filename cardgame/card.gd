@@ -4,14 +4,14 @@ var title:String
 var image:Texture2D
 var description:String
 
-var statement_node:Statement #struct that contains other important data that will be handed around with the card
+var statement:Statement #struct that contains other important data that will be handed around with the card
 
 static func from_statement(statement:Statement) -> Card:
 	var obj = Card.new()
-	obj.statement_node = statement
-	obj.image = obj.statement_node.data.artwork
-	obj.title = obj.statement_node.data.title
-	obj.description = format_card_text(obj.statement_node.data.text,obj.statement_node.substatement_types)
+	obj.statement = statement
+	obj.image = obj.statement.data.artwork
+	obj.title = obj.statement.data.title
+	obj.description = format_card_text(obj.statement.data.text,obj.statement.substatement_types)
 
 	return obj
 
@@ -24,6 +24,8 @@ static func format_card_text(oringial_text:String,substate_types:Array[ENUMS.ST_
 			var index = int(substring[1])
 			var color = COLORS.ST_COLORS[substate_types[index]]
 			var type_name = ENUMS.ST_TYPES.keys()[substate_types[index]]
+			if type_name == "CONJUNCTION":
+				type_name = "???"
 			text = "[color=" + color + "]"+ type_name +"[/color]"
 		else:
 			text = substring
