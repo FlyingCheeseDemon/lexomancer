@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://ch6lxktaygbvx"]
+
+[ext_resource type="Script" uid="uid://don3nxdkeqry7" path="res://scripts/statement_receiver.gd" id="1_t28a0"]
+
+[node name="StatementBlockReceiver" type="PanelContainer" unique_id=1191217329]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1052.0
+offset_bottom = -548.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_t28a0")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=199471403]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+mouse_filter = 2

@@ -43,6 +43,14 @@ func execute(game:Game): # the return type for this depends on the type
 	
 	return self.execute_fnc.call(game,self)
 
+func check_executable_recursively() -> bool:
+	for substatement in substatement_pointers:
+		if not substatement: # if it doesn't exist
+			return false
+		if not substatement.check_executable_recursively(): # or is not filled
+			return false
+	return true
+
 static func constructor(statement_data: StatementData) -> Statement:
 	var obj := self_scene.instantiate()
 	obj.data = statement_data.duplicate()

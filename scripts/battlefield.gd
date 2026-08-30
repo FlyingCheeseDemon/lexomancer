@@ -27,6 +27,9 @@ func add_entity(new_entity:Entity,coordinate:Vector2i) -> bool: # returns succes
 		return true
 
 func get_entity_from_position(coordinate:Vector2i) -> Entity:
+	var entity = battlefield_grid[coordinate[0]][coordinate[1]]
+	if not is_instance_valid(entity):
+		battlefield_grid[coordinate[0]][coordinate[1]] = null
 	return battlefield_grid[coordinate[0]][coordinate[1]]
 
 #func attack_fields(positions:Array[Vector2i],attack_function:Callable) -> void:

@@ -1,5 +1,9 @@
 class_name StatementFunctions
 
+static func execute_root(gamestate:Game,self_statement:Statement) -> void:
+	var modifying:Statement = self_statement.substatement_pointers[0]
+	modifying.execute(gamestate)
+
 static func execute_fireball(_gamestate:Game,_self_statement:Statement) -> Callable:
 	return fireball
 	

@@ -1,10 +1,12 @@
-extends HFlowContainer
+extends Container
 
 class_name StatementBlock
 
 const scene = "res://scenes/statement_block.tscn"
 
 var statement_node:Statement
+
+signal statement_block_clicked
 
 static func constructor(statement:Statement) -> StatementBlock:
 	var self_scene = load(scene)
@@ -28,8 +30,13 @@ func generate_subnodes() -> Array[Control]:
 			# the subnode is a container where we can drop in another one.
 			# to do: make a scene which has all the necessary plumbing
 			new_node = StatementBlockReceiver.constructor(self.statement_node.substatement_types[index])
+			new_node.index = index
+			new_node.connect("receiver_clicked",_on_receiver_clicked)
 		else:
 			new_node = Label.new()
 			new_node.text = substring
 		node_array.append(new_node)
 	return node_array
+
+func _on_receiver_clicked(receiverNode:StatementBlockReceiver) -> void:
+	statement_block_clicked.emit(self,receiverNode)
