@@ -3,8 +3,10 @@ extends CanvasLayer
 @onready var hand:Hand = $Hand
 @onready var deck:CardPile = $DrawPile
 @onready var discard:CardPile = $DiscardPile
+@onready var used:CardPile = $UsedCards
 @onready var spell_book:SpellBook = $SpellBook
 @onready var drag_drop:Control = $DragAndDropHandle
+@onready var reset_button:Button = $ResetSpellBookButton
 
 @onready var statement_manager:StatementManager = $StatementManager
 
@@ -77,6 +79,11 @@ func end_turn_card_management() -> void:
 		discard.add_top_deck(card_ctrl.card)
 		card_ctrl.queue_free()
 	
+	# put card from used pile to discard
+	while used.get_length():
+		discard.add_top_deck(used.draw())
+		
+	# redraw to ... idk 7?
 	for i in range(7):
 		if deck.get_length() == 0:
 			deck.card_list = discard.card_list
@@ -87,7 +94,6 @@ func end_turn_card_management() -> void:
 		
 		var card:Card = deck.draw()
 		hand.add_card(card)
-	# redraw to ... idk 7?
 
 func add_statement_to_spellbook(target:Statement,index:int, stat:Statement) -> void:
 	spell_book.add_statement(target,index, stat)
@@ -103,7 +109,7 @@ func _on_statement_receiver_clicked(parent_statement:Statement,clicked_container
 	
 	self.add_statement_to_spellbook(parent_statement,clicked_container.index,drag_drop.dragged_card.card.statement)
 	
-	discard.add_top_deck(Card.from_statement(Statement.constructor(drag_drop.dragged_card.card.statement.data)))
+	used.add_top_deck(Card.from_statement(Statement.constructor(drag_drop.dragged_card.card.statement.data)))
 	drag_drop.dragged_card = null
 	
 func get_root_spell() -> Statement:
@@ -112,3 +118,9 @@ func get_root_spell() -> Statement:
 func reset_spell_blook() -> void:
 	spell_book.clear()
 	self.set_root_spell()
+
+func _on_reset_spell_book_button_button_up() -> void:
+	spell_book.clear()
+	self.set_root_spell()
+	while used.get_length():
+		hand.add_card(used.draw())

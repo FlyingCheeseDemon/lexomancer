@@ -8,10 +8,9 @@ static func execute_and(gamestate:Game,self_statement:Statement): # return value
 	var substatement_1:Statement = self_statement.substatement_pointers[0]
 	var substatement_2:Statement = self_statement.substatement_pointers[1]
 	
-	assert(substatement_1.type == substatement_2.type)
-	assert(substatement_1.type != 3) # conjuction type will always be overwritten on use
+	assert(self_statement.type != 3) # conjuction type will always be overwritten on use
 	# {MODIFYING, TARGET, EFFECT, CONJUNCTION, ENTITY}
-	match substatement_1.type:
+	match self_statement.type:
 		0: # modifying. these are full spells, just cast both
 			substatement_1.execute(gamestate)
 			substatement_2.execute(gamestate)
@@ -32,7 +31,6 @@ static func execute_and(gamestate:Game,self_statement:Statement): # return value
 		4: 
 			# not implemented
 			pass
-
 
 static func execute_spell1(gamestate:Game,self_statement:Statement) -> void:
 	var effect:Statement = self_statement.substatement_pointers[0]
@@ -57,13 +55,12 @@ static func execute_spell2(gamestate:Game,self_statement:Statement) -> void:
 		effect_function.call(gamestate.battlefield,target_position)
 
 static func execute_fireball(_gamestate:Game,_self_statement:Statement) -> Callable:
+	var fireball = func (battlefield:Battlefield,target:Vector2i):
+		var entity:Entity = battlefield.get_entity_from_position(target)
+		if entity:
+			entity.change_health(-5)
 	return fireball
-	
-static func fireball(battlefield:Battlefield,target:Vector2i) -> void:
-	var entity:Entity = battlefield.get_entity_from_position(target)
-	if entity:
-		entity.change_health(-5)
-	
+
 static func execute_column_2(_gamestate:Game,_self_statement:Statement) -> Array[Vector2i]:
 	var column_2:Array[Vector2i] = [
 		Vector2i(2,0),

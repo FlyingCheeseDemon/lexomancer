@@ -47,6 +47,12 @@ offset_top = 428.0
 offset_right = 1127.0
 offset_bottom = 628.0
 
+[node name="UsedCards" parent="." unique_id=1580323403 instance=ExtResource("4_lttgl")]
+offset_left = 978.0
+offset_top = 198.0
+offset_right = 1128.0
+offset_bottom = 398.0
+
 [node name="Hand" parent="." unique_id=2129383725 instance=ExtResource("5_v8m38")]
 offset_left = 234.0
 offset_top = 446.0
@@ -55,7 +61,15 @@ offset_bottom = 646.0
 max_hand_size = 8
 arch_angle = 15.0
 
+[node name="ResetSpellBookButton" type="Button" parent="." unique_id=1179257774]
+offset_left = 409.0
+offset_top = 341.0
+offset_right = 458.0
+offset_bottom = 390.0
+text = "R"
+
 [node name="DragAndDropHandle" parent="." unique_id=1715192286 instance=ExtResource("6_ijfxj")]
 
 [connection signal="card_dragged_in_hand" from="Hand" to="." method="_on_hand_card_dragged_in_hand"]
 [connection signal="dummy_card_clicked_in_hand" from="Hand" to="." method="_on_dummy_clicked_in_hand"]
+[connection signal="button_up" from="ResetSpellBookButton" to="." method="_on_reset_spell_book_button_button_up"]
