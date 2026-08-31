@@ -78,3 +78,10 @@ static func execute_everything(gamestate:Game,_self_statement:Statement) -> Arra
 		for j in range(field.height):
 			everywhere.append(Vector2i(i,j))
 	return everywhere
+
+static func generate_a_position(kwargs:Dictionary) -> Callable:
+	var position:Vector2i = kwargs["position"]
+	var execute_eph_a_position = func (_gamestate:Game,_self_statement:Statement):
+		var output:Array[Vector2i] = [position]
+		return output
+	return execute_eph_a_position

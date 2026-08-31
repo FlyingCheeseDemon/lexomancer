@@ -5,6 +5,7 @@ var image:Texture2D
 var description:String
 
 var statement:Statement #struct that contains other important data that will be handed around with the card
+var ephemeral:bool = false # if ephemeral a card will not persist after the turn
 
 static func from_statement(statement:Statement) -> Card:
 	var obj = Card.new()

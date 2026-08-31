@@ -8,3 +8,5 @@ class_name EntityData
 
 @export_category("Combat")
 @export var max_health: int
+@export var attack_strength: int
+@export var attack_range: int

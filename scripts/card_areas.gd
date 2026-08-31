@@ -48,6 +48,16 @@ func _ready() -> void:
 		
 	self.set_root_spell()
 	
+func _input(event:InputEvent) -> void:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT:
+		if event.is_pressed() and  drag_drop.dragged_card:
+			var card = drag_drop.dragged_card
+			drag_drop.dragged_card = null
+			if card.card.ephemeral:
+				card.queue_free()
+			else:
+				hand.add_card(card.card)
+
 func set_root_spell() -> void:
 	var root = statement_manager.get_statement_by_name("root")
 	spell_book.root = root
@@ -66,12 +76,12 @@ func _on_dummy_clicked_in_hand(dummy:DummyCard,source_hand:Hand) -> void:
 	source_hand.replace_dummy_with_card_ctrl(dummy,card)
 	
 func _on_hand_mouse_enter(hovered_hand:Hand) -> void:
-	if drag_drop.dragged_card:
+	if drag_drop.dragged_card and not drag_drop.dragged_card.card.ephemeral:
 		hovered_hand.hover_card_start()
 	
 func _on_hand_mouse_exit(hovered_hand:Hand) -> void:
 	hovered_hand.hover_card_stop()
-	
+
 func end_turn_card_management() -> void:
 	# discard remaining hand
 	for card_ctrl in hand.get_children():
@@ -108,8 +118,8 @@ func _on_statement_receiver_clicked(parent_statement:Statement,clicked_container
 		return
 	
 	self.add_statement_to_spellbook(parent_statement,clicked_container.index,drag_drop.dragged_card.card.statement)
-	
-	used.add_top_deck(Card.from_statement(Statement.constructor(drag_drop.dragged_card.card.statement.data)))
+	if not drag_drop.dragged_card.card.ephemeral:
+		used.add_top_deck(Card.from_statement(Statement.constructor(drag_drop.dragged_card.card.statement.data)))
 	drag_drop.dragged_card = null
 	
 func get_root_spell() -> Statement:
@@ -124,3 +134,13 @@ func _on_reset_spell_book_button_button_up() -> void:
 	self.set_root_spell()
 	while used.get_length():
 		hand.add_card(used.draw())
+		
+func generate_ephemeral_position_card(pos_clicked) -> void:
+	var statement_data:StatementData = statement_manager.get_statement_data_by_name("a_position")
+	statement_data.title = str(pos_clicked)
+	statement_data.text = str(pos_clicked)
+	var statement_object := Statement.constructor(statement_data,{"position": pos_clicked})
+	var card:Card = Card.from_statement(statement_object)
+	card.ephemeral = true
+	var card_ctrl:CardCtrl = CardCtrl.constructor(card)
+	drag_drop.dragged_card = card_ctrl

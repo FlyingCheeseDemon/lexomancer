@@ -16,7 +16,7 @@ script = ExtResource("1_hhpnw")
 offset_left = 27.0
 offset_top = 17.0
 offset_right = 473.0
-offset_bottom = 405.0
+offset_bottom = 322.0
 color = Color(0.60400695, 0.70245564, 0.8153076, 1)
 script = ExtResource("7_ijfxj")
 
@@ -62,10 +62,10 @@ max_hand_size = 8
 arch_angle = 15.0
 
 [node name="ResetSpellBookButton" type="Button" parent="." unique_id=1179257774]
-offset_left = 409.0
-offset_top = 341.0
-offset_right = 458.0
-offset_bottom = 390.0
+offset_left = 410.0
+offset_top = 258.0
+offset_right = 459.0
+offset_bottom = 307.0
 text = "R"
 
 [node name="DragAndDropHandle" parent="." unique_id=1715192286 instance=ExtResource("6_ijfxj")]

@@ -9,6 +9,8 @@ class_name Battlefield
 @onready var entities := $Entities
 var battlefield_grid: Array[Array]
 
+signal cell_clicked
+
 func _ready() -> void:
 	battlefield_grid = []
 	for i:int in range(height):
@@ -17,14 +19,29 @@ func _ready() -> void:
 			battlefield_grid[i].append(null)
 
 func add_entity(new_entity:Entity,coordinate:Vector2i) -> bool: # returns success
-	if battlefield_grid[coordinate[0]][coordinate[1]]:
+	if not coordinate_in_bounds(coordinate):
 		return false
-	else:
-		battlefield_grid[coordinate[0]][coordinate[1]] = new_entity
-		new_entity.battle_position = coordinate
-		new_entity.position = battlefield_grid_node.map_to_local(coordinate)
-		entities.add_child(new_entity)
+	if coordinate_occupied(coordinate):
+		return false
+	
+	place_entity(new_entity,coordinate)
+	entities.add_child(new_entity)
+	return true
+
+func place_entity(entity:Entity,coordinate:Vector2i):
+	battlefield_grid[coordinate[0]][coordinate[1]] = entity
+	entity.battle_position = coordinate
+	entity.position = battlefield_grid_node.map_to_local(coordinate)
+
+func coordinate_in_bounds(coordinate:Vector2i) -> bool:
+	if battlefield_grid_node.get_cell_tile_data(coordinate) == null:
+		return false
+	return true
+
+func coordinate_occupied(coordinate:Vector2i) -> bool:
+	if battlefield_grid[coordinate[0]][coordinate[1]]:
 		return true
+	return false
 
 func get_entity_from_position(coordinate:Vector2i) -> Entity:
 	var entity = battlefield_grid[coordinate[0]][coordinate[1]]
@@ -32,20 +49,32 @@ func get_entity_from_position(coordinate:Vector2i) -> Entity:
 		battlefield_grid[coordinate[0]][coordinate[1]] = null
 	return battlefield_grid[coordinate[0]][coordinate[1]]
 
-#func attack_fields(positions:Array[Vector2i],attack_function:Callable) -> void:
-	#for position in positions:
-		#if battlefield_grid[position[0]][position[1]]:
-			#var entity:Entity = battlefield_grid[position[0]][position[1]]
-			#attack_function.call(entity)
-	#
-#func attack_column(index:int,attack_function:Callable) -> void:
-	#var positions: Array[Vector2i] = []
-	#for i:int in range(self.width):
-		#positions.append(Vector2i(index,i))
-	#attack_fields(positions,attack_function)
-	#
-#func attack_row(index:int,attack_function:Callable) -> void:
-	#var positions: Array[Vector2i] = []
-	#for i:int in range(self.height):
-		#positions.append(Vector2i(i,index))
-	#attack_fields(positions,attack_function)
+func end_of_turn_enitity_management() -> void:
+	# enemies act from bottom to top and from left to right
+	# they first move and then attack
+	# might make them smarter at some point
+	var enemies: Array[Entity] = get_enemies_in_action_order()
+	for enemy in enemies:
+		if enemy.battle_position[1] != self.height-1:
+			if not coordinate_occupied(enemy.battle_position + Vector2i(0,1)):
+				var coordinate = enemy.battle_position
+				battlefield_grid[coordinate[0]][coordinate[1]] = null
+				self.place_entity(enemy,enemy.battle_position + Vector2i(0,1))
+			else:
+				# it's gonna depend tbd
+				pass
+		else:
+			# attack the player
+			pass
+func get_enemies_in_action_order() -> Array[Entity]:
+	var enemies:Array[Entity] = []
+	for row_inx in range(self.height-1,-1,-1):
+		for col_inx in range(self.width):
+			var pos:Vector2i = Vector2i(col_inx,row_inx)
+			var entity = self.get_entity_from_position(pos)
+			if entity:
+				enemies.append(entity)
+	return enemies
+
+func _on_battlefield_cell_clicked(event:InputEvent,pos_clicked:Vector2i) -> void:
+	cell_clicked.emit(event,pos_clicked)

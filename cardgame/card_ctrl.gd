@@ -16,6 +16,8 @@ signal card_drag_stop
 @onready var title_label:Label = $MarginContainer/VBoxContainer/Label
 @onready var body_label:RichTextLabel = $MarginContainer/VBoxContainer/RichTextLabel
 
+@onready var alternate_texture_ephemeral:Texture2D = load("res://0_assets/textures/card_front_ephemeral.png")
+
 static func constructor(card_to_load:Card) -> CardCtrl:
 	var self_scene = load(scene)
 	var obj = self_scene.instantiate()
@@ -23,6 +25,8 @@ static func constructor(card_to_load:Card) -> CardCtrl:
 	return obj
 
 func _ready() -> void:
+	if card.ephemeral:
+		self.texture = self.alternate_texture_ephemeral
 	var card_texture = card.image
 	if card_texture: # and if not it remains the placeholder texture
 		self.texture_container.texture = card_texture

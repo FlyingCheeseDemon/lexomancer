@@ -9,4 +9,6 @@ name = "pink_slime"
 title = "pink slime"
 texture = ExtResource("2_nb7qo")
 max_health = 11
+attack_strength = 3
+attack_range = 1
 metadata/_custom_type_script = "uid://2rpjogh47frk"

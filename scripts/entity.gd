@@ -27,9 +27,6 @@ func _ready() -> void:
 	print("spawned!")
 	print(self.battle_position)
 
-func attack(target:Entity) -> void:
-	pass
-
 func change_health(difference:int) -> void:
 	self.current_health += difference
 	if self.current_health <= 0:

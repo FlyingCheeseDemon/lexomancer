@@ -14,14 +14,18 @@ var execute_fnc:Callable
 var substatement_pointers:Array[Statement] = []
 var substatement_types:Array[ENUMS.ST_TYPES] = []
 
-
 signal statement_receiver_clicked
 
-static func constructor(statement_data: StatementData) -> Statement:
+static func constructor(statement_data: StatementData, callable_generation_args:Dictionary = {}) -> Statement:
 	var obj := self_scene.instantiate()
 	obj.data = statement_data.duplicate()
 	obj.type = obj.data.type
-	obj.execute_fnc = Callable(StatementFunctions, "execute_" + obj.data.name)
+	if len(callable_generation_args.keys()) == 0:
+		# a static statement
+		obj.execute_fnc = Callable(StatementFunctions, "execute_" + obj.data.name)
+	else:
+		# a dynamic statement which is probably dependent on some user input
+		obj.execute_fnc = Callable(StatementFunctions, "generate_" + obj.data.name).call(callable_generation_args)
 	obj.substatement_types = obj.data.substatement_types.duplicate()
 	obj.substatement_pointers.resize(len(obj.data.substatement_types))
 	obj.substatement_pointers.fill(null)

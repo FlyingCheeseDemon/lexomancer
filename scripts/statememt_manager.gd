@@ -19,10 +19,13 @@ func initialize_statement_dict() -> void:
 			continue
 		statement_dictionary[resource.name] = resource
 
-func get_statement_by_name(key:String) -> Statement:
+func get_statement_data_by_name(key:String) -> StatementData:
 	if len(statement_dictionary.keys()) == 0:
 		initialize_statement_dict();
-		
-	var statement:StatementData = statement_dictionary[key]
+	var statement:StatementData = statement_dictionary[key].duplicate()
+	return statement
+	
+func get_statement_by_name(key:String) -> Statement:
+	var statement = get_statement_data_by_name(key)
 	var statement_object := Statement.constructor(statement)
 	return statement_object
