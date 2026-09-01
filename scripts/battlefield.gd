@@ -12,6 +12,7 @@ var label_offset := Vector2(0,-10)
 var battlefield_grid: Array[Array]
 
 signal cell_clicked
+signal player_attacked
 
 func _ready() -> void:
 	battlefield_grid = []
@@ -76,8 +77,8 @@ func end_of_turn_enitity_management() -> void:
 				# it's gonna depend tbd
 				pass
 		else:
-			# attack the player
-			pass
+			player_attacked.emit(enemy.data.attack_strength)
+
 func get_enemies_in_action_order() -> Array[Entity]:
 	var enemies:Array[Entity] = []
 	for row_inx in range(self.height-1,-1,-1):

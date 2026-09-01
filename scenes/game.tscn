@@ -33,10 +33,10 @@ offset_bottom = 388.0
 texture_normal = ExtResource("6_p57ef")
 
 [node name="PlayerHealthLabel" type="Label" parent="." unique_id=857403667]
-offset_left = 945.0
-offset_top = 56.0
-offset_right = 1085.0
-offset_bottom = 119.0
+offset_left = 982.0
+offset_top = 99.0
+offset_right = 1122.0
+offset_bottom = 162.0
 theme_override_font_sizes/font_size = 40
 text = "10/10"
 horizontal_alignment = 1
@@ -46,5 +46,7 @@ vertical_alignment = 1
 max_health = 15
 
 [connection signal="cell_clicked" from="Battlefield" to="." method="_on_battlefield_cell_clicked"]
+[connection signal="player_attacked" from="Battlefield" to="." method="_on_battlefield_player_attacked"]
 [connection signal="button_up" from="EndTurnButton" to="." method="_on_end_turn_button_button_up"]
 [connection signal="health_changed" from="Player" to="." method="_on_player_health_changed"]
+[connection signal="i_died" from="Player" to="." method="_on_player_i_died"]

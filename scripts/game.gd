@@ -41,3 +41,9 @@ func update_player_health_label() -> void:
 
 func _on_player_health_changed() -> void:
 	update_player_health_label()
+
+func _on_player_i_died() -> void:
+	pass # TODO: GAME OVER 
+
+func _on_battlefield_player_attacked(attack_damage:int) -> void:
+	player.reduce_health(attack_damage)
