@@ -58,8 +58,25 @@ static func execute_fireball(_gamestate:Game,_self_statement:Statement) -> Calla
 	var fireball = func (battlefield:Battlefield,target:Vector2i):
 		var entity:Entity = battlefield.get_entity_from_position(target)
 		if entity:
-			entity.change_health(-5)
+			entity.change_health(-3)
+		var splash:Array[Vector2i] = [
+			target + Vector2i(1,0),
+			target + Vector2i(-1,0),
+			target + Vector2i(0,1),
+			target + Vector2i(0,-1)
+		]
+		for t:Vector2i in splash:
+			entity = battlefield.get_entity_from_position(t)
+			if entity:
+				entity.change_health(-2)
 	return fireball
+
+static func execute_magic_dart(_gamestate:Game,_self_statement:Statement) -> Callable:
+	var magic_dart = func (battlefield:Battlefield,target:Vector2i):
+		var entity:Entity = battlefield.get_entity_from_position(target)
+		if entity:
+			entity.change_health(-5)
+	return magic_dart
 
 static func execute_column_2(_gamestate:Game,_self_statement:Statement) -> Array[Vector2i]:
 	var column_2:Array[Vector2i] = [

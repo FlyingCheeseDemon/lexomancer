@@ -54,6 +54,8 @@ func coordinate_occupied(coordinate:Vector2i) -> bool:
 	return false
 
 func get_entity_from_position(coordinate:Vector2i) -> Entity:
+	if not self.coordinate_in_bounds(coordinate):
+		return null
 	var entity = battlefield_grid[coordinate[0]][coordinate[1]]
 	if not is_instance_valid(entity):
 		battlefield_grid[coordinate[0]][coordinate[1]] = null

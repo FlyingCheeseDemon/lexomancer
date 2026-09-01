@@ -20,17 +20,17 @@ func _ready() -> void:
 		new_card = Card.from_statement(statement)
 		deck.add_top_deck(new_card)
 		
-	for i in range(7):
+	for i in range(5):
 		statement = statement_manager.get_statement_by_name("fireball")
 		new_card = Card.from_statement(statement)
 		deck.add_top_deck(new_card)
 		
 	for i in range(5):
-		statement = statement_manager.get_statement_by_name("column_2")
+		statement = statement_manager.get_statement_by_name("magic_dart")
 		new_card = Card.from_statement(statement)
 		deck.add_top_deck(new_card)
 		
-	for i in range(2):
+	for i in range(1):
 		statement = statement_manager.get_statement_by_name("everything")
 		new_card = Card.from_statement(statement)
 		deck.add_top_deck(new_card)
