@@ -57,6 +57,7 @@ func _input(event:InputEvent) -> void:
 				card.queue_free()
 			else:
 				hand.add_card(card.card)
+				hand.hover_card_stop()
 
 func set_root_spell() -> void:
 	var root = statement_manager.get_statement_by_name("root")
@@ -135,12 +136,15 @@ func _on_reset_spell_book_button_button_up() -> void:
 	while used.get_length():
 		hand.add_card(used.draw())
 		
-func generate_ephemeral_position_card(pos_clicked) -> void:
+func generate_ephemeral_position_card(pos_clicked:Vector2i) -> void:
 	var statement_data:StatementData = statement_manager.get_statement_data_by_name("a_position")
-	statement_data.title = str(pos_clicked)
-	statement_data.text = str(pos_clicked)
+	statement_data.title = format_coordinate(pos_clicked)
+	statement_data.text = format_coordinate(pos_clicked)
 	var statement_object := Statement.constructor(statement_data,{"position": pos_clicked})
 	var card:Card = Card.from_statement(statement_object)
 	card.ephemeral = true
 	var card_ctrl:CardCtrl = CardCtrl.constructor(card)
 	drag_drop.dragged_card = card_ctrl
+
+func format_coordinate(coordinate:Vector2i) -> String:
+	return char(coordinate.x + 65) + str(coordinate.y+1)

@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cs6jgpvkae5rr" path="res://0_assets/textures/battlefield_tile.png" id="1_5rve1"]
 [ext_resource type="Script" uid="uid://dbychyykng0dv" path="res://scripts/battlefield.gd" id="1_d5hba"]
-[ext_resource type="Script" uid="uid://c1mxgi3imo8xh" path="res://scenes/battlefield_tile_layer.gd" id="3_j68fe"]
+[ext_resource type="Script" uid="uid://c1mxgi3imo8xh" path="res://scripts/battlefield_tile_layer.gd" id="3_j68fe"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d5hba"]
 texture = ExtResource("1_5rve1")
@@ -20,6 +20,8 @@ script = ExtResource("1_d5hba")
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAEAAEAAAAAAAAAAAAEAAIAAAAAAAAAAAAEAAMAAAAAAAAAAAAEAAQAAAAAAAAAAAADAAQAAAAAAAAAAAACAAQAAAAAAAAAAAABAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAACAAIAAAAAAAAAAAADAAIAAAAAAAAAAAACAAMAAAAAAAAAAAABAAIAAAAAAAAAAAADAAEAAAAAAAAAAAADAAMAAAAAAAAAAAABAAMAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_j68fe")
 script = ExtResource("3_j68fe")
+
+[node name="RowAndColLabels" type="Node2D" parent="." unique_id=1649047326]
 
 [node name="Entities" type="Node2D" parent="." unique_id=434740394]
 

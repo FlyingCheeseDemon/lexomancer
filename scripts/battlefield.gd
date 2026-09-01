@@ -6,6 +6,8 @@ class_name Battlefield
 @export var height:int = 5
 
 @onready var battlefield_grid_node := $Battlefield
+@onready var row_col_label_parent := $RowAndColLabels
+var label_offset := Vector2(0,-10)
 @onready var entities := $Entities
 var battlefield_grid: Array[Array]
 
@@ -17,6 +19,14 @@ func _ready() -> void:
 		battlefield_grid.append([])
 		for _j:int in range(width):
 			battlefield_grid[i].append(null)
+	for i in range(height):
+		var lab = RowColLabel.constructor(str(i+1))
+		lab.position = battlefield_grid_node.map_to_local(Vector2i(-1,i))+label_offset
+		row_col_label_parent.add_child(lab)
+	for i in range(width):
+		var lab = RowColLabel.constructor(char(i+1+64))
+		lab.position = battlefield_grid_node.map_to_local(Vector2i(i,-1))+label_offset
+		row_col_label_parent.add_child(lab)
 
 func add_entity(new_entity:Entity,coordinate:Vector2i) -> bool: # returns success
 	if not coordinate_in_bounds(coordinate):
