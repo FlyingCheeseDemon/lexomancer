@@ -4,8 +4,9 @@
 
 [resource]
 script = ExtResource("1_jhchr")
-type = 2
 name = "fireball"
 title = "Fireball"
+card_text = "Deal 3 damage to a field and 2 splash damage in a distance of 1"
+type = 2
 text = "fireball"
 metadata/_custom_type_script = "uid://bb7ks18k2laji"

@@ -8,6 +8,7 @@ script = ExtResource("2_vqy2e")
 name = "spell1"
 title = "Spell"
 artwork = ExtResource("1_rpmh6")
+card_text = "Cast a spell"
 text = "cast %0 at %1"
 substatement_types = Array[int]([2, 1])
 metadata/_custom_type_script = "uid://bb7ks18k2laji"

@@ -1,11 +1,12 @@
-[gd_resource type="Resource" script_class="Statement" format=3 uid="uid://8j7g26jasrhi"]
+[gd_resource type="Resource" script_class="StatementData" format=3 uid="uid://8j7g26jasrhi"]
 
 [ext_resource type="Script" uid="uid://bb7ks18k2laji" path="res://scripts/statement_data.gd" id="1_yhtdy"]
 
 [resource]
 script = ExtResource("1_yhtdy")
-type = 1
 name = "column_2"
 title = "Column C"
+card_text = "Column C"
+type = 1
 text = "Col. C"
 metadata/_custom_type_script = "uid://bb7ks18k2laji"

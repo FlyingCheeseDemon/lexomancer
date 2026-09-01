@@ -4,8 +4,9 @@
 
 [resource]
 script = ExtResource("1_bxskl")
-type = 1
 name = "everything"
 title = "EVERYTHING"
+card_text = "EVERYTHING!!!"
+type = 1
 text = "EVERYTHING!!!"
 metadata/_custom_type_script = "uid://bb7ks18k2laji"

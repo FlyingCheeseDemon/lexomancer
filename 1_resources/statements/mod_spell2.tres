@@ -6,5 +6,6 @@
 script = ExtResource("1_5qbjv")
 name = "spell2"
 title = "Double spell"
+card_text = "Cast a spell twice"
 text = "cast %0 at %1 twice"
 metadata/_custom_type_script = "uid://bb7ks18k2laji"

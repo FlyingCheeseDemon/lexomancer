@@ -7,6 +7,7 @@ script = ExtResource("1_fonx7")
 type = 3
 name = "and"
 title = "And"
+card_text = "Combine two statements"
 text = "%0 and %1"
 substatement_types = Array[int]([3, 3])
 metadata/_custom_type_script = "uid://bb7ks18k2laji"
