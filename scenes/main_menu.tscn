@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://dftvw4lgjvgel"]
+
+[ext_resource type="Script" uid="uid://e5xkqitv4vot" path="res://scripts/main_menu.gd" id="1_ekxnf"]
+[ext_resource type="Texture2D" uid="uid://d01sny76dk2a8" path="res://0_assets/textures/title_screen.png" id="1_l6cm7"]
+
+[node name="MainMenu" type="CanvasLayer" unique_id=861764020]
+script = ExtResource("1_ekxnf")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=674075435]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_l6cm7")
+expand_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="TextureRect" unique_id=2082210459]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/CenterContainer" unique_id=1117518531]
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="TextureRect/CenterContainer/VBoxContainer" unique_id=2064222677]
+layout_mode = 2
+text = "START"
+
+[node name="CloseButton" type="Button" parent="TextureRect/CenterContainer/VBoxContainer" unique_id=1217249242]
+layout_mode = 2
+text = "CLOSE
+"
+
+[connection signal="button_up" from="TextureRect/CenterContainer/VBoxContainer/StartButton" to="." method="_on_start_button_button_up"]
+[connection signal="button_up" from="TextureRect/CenterContainer/VBoxContainer/CloseButton" to="." method="_on_close_button_button_up"]

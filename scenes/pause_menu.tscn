@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://cmfqqxx8y14w6"]
+
+[ext_resource type="Script" uid="uid://cnkmw4a5mccj3" path="res://scripts/pause_menu.gd" id="1_n87rw"]
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=1042567904]
+script = ExtResource("1_n87rw")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1545748281]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.16, 0.16, 0.16, 0.75686276)
+
+[node name="CenterContainer" type="CenterContainer" parent="ColorRect" unique_id=1878725706]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/CenterContainer" unique_id=1335006346]
+layout_mode = 2
+
+[node name="ResumeButton" type="Button" parent="ColorRect/CenterContainer/VBoxContainer" unique_id=191783945]
+layout_mode = 2
+text = "RESUME"
+
+[node name="TitleMenuButton" type="Button" parent="ColorRect/CenterContainer/VBoxContainer" unique_id=1204704508]
+layout_mode = 2
+text = "TITLE MENU"
+
+[node name="CloseButton" type="Button" parent="ColorRect/CenterContainer/VBoxContainer" unique_id=1699610000]
+layout_mode = 2
+text = "QUIT
+"
+
+[connection signal="button_up" from="ColorRect/CenterContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_button_up"]
+[connection signal="button_up" from="ColorRect/CenterContainer/VBoxContainer/TitleMenuButton" to="." method="_on_title_menu_button_button_up"]
+[connection signal="button_up" from="ColorRect/CenterContainer/VBoxContainer/CloseButton" to="." method="_on_close_button_button_up"]

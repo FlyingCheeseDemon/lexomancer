@@ -10,6 +10,13 @@ class_name Game
 @onready var player_health_label:Label = $PlayerHealthLabel
 @onready var player:Player = $Player
 
+const scene = "res://scenes/game.tscn"
+
+static func constructor() -> Game:
+	var self_scene = load(scene)
+	var obj = self_scene.instantiate()
+	return obj
+
 func _ready() -> void:
 	var enemy:Entity
 	var positions = [
@@ -22,7 +29,7 @@ func _ready() -> void:
 		enemy = entity_manager.get_entity_by_name("pink_slime")
 		battlefield.add_entity(enemy,position)
 	update_player_health_label()
-	
+
 func _on_end_turn_button_button_up() -> void:
 	var root_spell:Statement = card_manager.get_root_spell()
 	if root_spell.check_executable_recursively():

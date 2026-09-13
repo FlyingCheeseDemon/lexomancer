@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://d3t8hi54p6xk2" path="res://scenes/player.tscn" id="7_u5sy4"]
 
 [node name="Game" type="CanvasLayer" unique_id=1666584573]
+layer = 0
 script = ExtResource("1_uwrxv")
 
 [node name="EntityManager" parent="." unique_id=708733802 instance=ExtResource("2_iywne")]
@@ -24,6 +25,7 @@ color = Color(0.32143465, 0.45916796, 0.5483141, 1)
 position = Vector2(581, 62)
 
 [node name="CardAreas" parent="." unique_id=1683924763 instance=ExtResource("3_lnu2h")]
+layer = 0
 
 [node name="EndTurnButton" type="TextureButton" parent="." unique_id=1035974713]
 offset_left = 149.0
