@@ -10,3 +10,5 @@ class_name EntityData
 @export var max_health: int
 @export var attack_strength: int
 @export var attack_range: int
+
+@export var danger_value: int

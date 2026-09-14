@@ -8,4 +8,5 @@ name = "root"
 title = "I shall ....."
 text = "I shall %0"
 substatement_types = Array[int]([0])
+rarity = 3
 metadata/_custom_type_script = "uid://bb7ks18k2laji"

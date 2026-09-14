@@ -29,6 +29,21 @@ func _ready() -> void:
 		lab.position = battlefield_grid_node.map_to_local(Vector2i(i,-1))+label_offset
 		row_col_label_parent.add_child(lab)
 
+func clear_field() -> void:
+	for i in range(width):
+		for j in range(height):
+			var entity = battlefield_grid[i][j]
+			if entity:
+				entity.queue_free()
+			battlefield_grid[i][j] = null
+
+func is_empty() -> bool:
+	for i in range(width):
+		for j in range(height):
+			if battlefield_grid[i][j]:
+				return false
+	return true
+
 func add_entity(new_entity:Entity,coordinate:Vector2i) -> bool: # returns success
 	if not coordinate_in_bounds(coordinate):
 		return false

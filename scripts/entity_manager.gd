@@ -26,3 +26,23 @@ func get_entity_by_name(key:String) -> Entity:
 	var entity:EntityData = entity_dictionary[key]
 	var entity_object := Entity.constructor(entity)
 	return entity_object
+	
+func sort_entity_data_by_danger_value_descending(a:String,b:String) -> bool:
+	var entity_data_a:EntityData = entity_dictionary[a]
+	var entity_data_b:EntityData = entity_dictionary[b]
+	if entity_data_a.danger_value > entity_data_b.danger_value:
+		return true
+	return false
+	
+func get_sorted_entity_name_list_descending_danger_value() -> Array[String]:
+	if len(entity_dictionary.keys()) == 0:
+		initialize_entity_dict();
+	var entity_list:Array = entity_dictionary.keys().duplicate()
+	entity_list.sort_custom(sort_entity_data_by_danger_value_descending)
+	return entity_list
+
+func get_enemies_danger_value_by_name(name:String) -> int:
+	if len(entity_dictionary.keys()) == 0:
+		initialize_entity_dict();
+	var entity_data:EntityData = entity_dictionary[name]
+	return entity_data.danger_value

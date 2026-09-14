@@ -1,8 +1,5 @@
 extends CanvasLayer
 
-@onready var start_button := $TextureRect/CenterContainer/VBoxContainer/StartButton
-@onready var close_button := $TextureRect/CenterContainer/VBoxContainer/Close
-
 signal resume
 signal to_title
 signal quit

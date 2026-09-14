@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_xvdsb")
-type = 1
 name = "a_position"
+type = 1
+rarity = 3
 metadata/_custom_type_script = "uid://bb7ks18k2laji"

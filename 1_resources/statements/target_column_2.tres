@@ -9,4 +9,5 @@ title = "Column C"
 card_text = "Column C"
 type = 1
 text = "Col. C"
+rarity = 1
 metadata/_custom_type_script = "uid://bb7ks18k2laji"

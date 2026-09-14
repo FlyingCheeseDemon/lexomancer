@@ -12,3 +12,6 @@ class_name StatementData
 @export var type:ENUMS.ST_TYPES
 @export_multiline var text:String
 @export var substatement_types:Array[ENUMS.ST_TYPES] = []
+
+@export_category("Tags")
+@export var rarity:ENUMS.ST_RARITIES

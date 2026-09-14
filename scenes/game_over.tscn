@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://bohp3fuo3uunj"]
+
+[ext_resource type="Script" uid="uid://cjw6r7upbrkkk" path="res://scripts/game_over.gd" id="1_wqhvx"]
+[ext_resource type="Texture2D" uid="uid://bug6hyw4ndxh6" path="res://0_assets/textures/game_over_splash.png" id="1_xeevv"]
+
+[node name="GameOver" type="CanvasLayer" unique_id=736331444]
+script = ExtResource("1_wqhvx")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1678794466]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_xeevv")
+expand_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="TextureRect" unique_id=1497423570]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="TextureRect/CenterContainer" unique_id=458974063]
+custom_minimum_size = Vector2(350, 250)
+layout_mode = 2
+color = Color(0.16206557, 0.1620656, 0.16206554, 0.7294118)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/CenterContainer" unique_id=1409639359]
+layout_mode = 2
+
+[node name="GameOverLabel" type="Label" parent="TextureRect/CenterContainer/VBoxContainer" unique_id=2103538005]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "GAME OVER"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="GridContainer" parent="TextureRect/CenterContainer/VBoxContainer" unique_id=1413985814]
+layout_mode = 2
+columns = 2
+
+[node name="DaysLabel" type="Label" parent="TextureRect/CenterContainer/VBoxContainer/HBoxContainer" unique_id=856925773]
+layout_mode = 2
+text = "Days survived:"
+
+[node name="DaysLabelAnswer" type="Label" parent="TextureRect/CenterContainer/VBoxContainer/HBoxContainer" unique_id=1434515947]
+layout_mode = 2
+text = "XY"
+
+[node name="EnemiesLabel" type="Label" parent="TextureRect/CenterContainer/VBoxContainer/HBoxContainer" unique_id=1190818167]
+layout_mode = 2
+text = "Enemies vanquished:   "
+
+[node name="EnemiesLabelAnswer" type="Label" parent="TextureRect/CenterContainer/VBoxContainer/HBoxContainer" unique_id=969718736]
+layout_mode = 2
+text = "YZ"
+
+[node name="ProgressLabel" type="Label" parent="TextureRect/CenterContainer/VBoxContainer/HBoxContainer" unique_id=1826641471]
+layout_mode = 2
+text = "Research progress:"
+
+[node name="ProgressLabelAnswer" type="Label" parent="TextureRect/CenterContainer/VBoxContainer/HBoxContainer" unique_id=657084306]
+layout_mode = 2
+text = "5%"
+
+[node name="TitleMenuButton" type="Button" parent="TextureRect/CenterContainer/VBoxContainer" unique_id=432689565]
+layout_mode = 2
+text = "TITLE MENU"
+
+[node name="QuitButton" type="Button" parent="TextureRect/CenterContainer/VBoxContainer" unique_id=1662442830]
+layout_mode = 2
+text = "QUIT"
+
+[connection signal="button_up" from="TextureRect/CenterContainer/VBoxContainer/TitleMenuButton" to="." method="_on_title_menu_button_button_up"]
+[connection signal="button_up" from="TextureRect/CenterContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_button_up"]

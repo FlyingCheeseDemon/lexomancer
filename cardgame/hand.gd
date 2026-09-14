@@ -57,6 +57,7 @@ func remove_card(card:CardCtrl) -> bool:
 	if card in self.get_children():
 		self.remove_child(card)
 		card.disconnect("card_drag_start",card_drag_start)
+		update_full()
 		return true
 	else:
 		return false
@@ -101,6 +102,8 @@ func on_dummy_clicked(dummy:DummyCard) -> void:
 func update_full() -> void:
 	if self.get_child_count() >= max_hand_size:
 		self.full = true
+	else:
+		self.full = false
 		
 func _ready() -> void:
 	sort_children.connect(_on_sort_children)

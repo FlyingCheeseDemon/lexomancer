@@ -10,6 +10,8 @@ extends CanvasLayer
 
 @onready var statement_manager:StatementManager = $StatementManager
 
+var cards_to_draw_at_beginning_of_turn = 7
+
 func _ready() -> void:
 	hand.connect("mouse_entered",_on_hand_mouse_enter.bind(hand))
 	hand.connect("mouse_exited",_on_hand_mouse_exit.bind(hand))
@@ -39,15 +41,24 @@ func _ready() -> void:
 		statement = statement_manager.get_statement_by_name("and")
 		new_card = Card.from_statement(statement)
 		deck.add_top_deck(new_card)
-	
+
 	deck.shuffle()
-	
-	for i in range(5):
-		var drawn_card = deck.draw()
-		hand.add_card(drawn_card)
 		
 	self.set_root_spell()
+
+func reset_deck() -> void:
+	# put cards back
+	for card_ctrl in hand.get_children():
+		hand.remove_card(card_ctrl)
+		deck.add_top_deck(card_ctrl.card)
+		card_ctrl.queue_free()
 	
+	while used.get_length():
+		deck.add_top_deck(used.draw())
+		
+	while discard.get_length():
+		deck.add_top_deck(discard.draw())
+
 func _input(event:InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT:
 		if event.is_pressed() and  drag_drop.dragged_card:
@@ -83,6 +94,18 @@ func _on_hand_mouse_enter(hovered_hand:Hand) -> void:
 func _on_hand_mouse_exit(hovered_hand:Hand) -> void:
 	hovered_hand.hover_card_stop()
 
+func start_turn_card_management() -> void:
+	for i in range(cards_to_draw_at_beginning_of_turn):
+		if deck.get_length() == 0:
+			deck.card_list = discard.card_list
+			discard.card_list = []
+			deck.update_counter()
+			discard.update_counter()
+			deck.shuffle()
+		
+		var card:Card = deck.draw()
+		hand.add_card(card)
+
 func end_turn_card_management() -> void:
 	# discard remaining hand
 	for card_ctrl in hand.get_children():
@@ -93,18 +116,7 @@ func end_turn_card_management() -> void:
 	# put card from used pile to discard
 	while used.get_length():
 		discard.add_top_deck(used.draw())
-		
-	# redraw to ... idk 7?
-	for i in range(7):
-		if deck.get_length() == 0:
-			deck.card_list = discard.card_list
-			discard.card_list = []
-			deck.update_counter()
-			discard.update_counter()
-			deck.shuffle()
-		
-		var card:Card = deck.draw()
-		hand.add_card(card)
+
 
 func add_statement_to_spellbook(target:Statement,index:int, stat:Statement) -> void:
 	spell_book.add_statement(target,index, stat)
