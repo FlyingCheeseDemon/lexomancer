@@ -9,6 +9,7 @@ class_name Battlefield
 @onready var row_col_label_parent := $RowAndColLabels
 var label_offset := Vector2(0,-10)
 @onready var entities := $Entities
+@onready var effect_animations := $EffectAnimations
 var battlefield_grid: Array[Array]
 
 signal cell_clicked
@@ -109,3 +110,10 @@ func get_enemies_in_action_order() -> Array[Entity]:
 
 func _on_battlefield_cell_clicked(event:InputEvent,pos_clicked:Vector2i) -> void:
 	cell_clicked.emit(event,pos_clicked)
+	
+func play_effect_animation_at_position(effect:Statement,target:Vector2i) -> void:
+	assert(effect.type == ENUMS.ST_TYPES.EFFECT)
+	var animation:EffectAnimation = EffectAnimation.constructor(effect)
+	animation.position = self.battlefield_grid_node.map_to_local(target)
+	effect_animations.add_child(animation)
+	animation.start()

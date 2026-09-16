@@ -1,12 +1,48 @@
 [gd_resource type="Resource" script_class="StatementData" format=3 uid="uid://i12u6tilv3pg"]
 
 [ext_resource type="Script" uid="uid://bb7ks18k2laji" path="res://scripts/statement_data.gd" id="1_54ae0"]
+[ext_resource type="Texture2D" uid="uid://bnlacfaxnt6ci" path="res://0_assets/textures/effect_animations/magic_dart.png" id="1_mwdsf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrvlw"]
+atlas = ExtResource("1_mwdsf")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iievf"]
+atlas = ExtResource("1_mwdsf")
+region = Rect2(50, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p4q0o"]
+atlas = ExtResource("1_mwdsf")
+region = Rect2(100, 0, 50, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nhk07"]
+animations = [{
+"frames": [],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_lrvlw")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_iievf")
+}, {
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_p4q0o")
+}],
+"loop": 0,
+"name": &"hit",
+"speed": 5.0
+}]
 
 [resource]
 script = ExtResource("1_54ae0")
 name = "magic_dart"
 title = "Magic dart"
 card_text = "Fire a magical projectile for 5 damage"
+animation = SubResource("SpriteFrames_nhk07")
 type = 2
 text = "magic dart"
 metadata/_custom_type_script = "uid://bb7ks18k2laji"

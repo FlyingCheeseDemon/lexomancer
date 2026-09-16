@@ -2,7 +2,7 @@ class_name StatementFunctions
 
 static func execute_root(gamestate:Game,self_statement:Statement) -> void:
 	var modifying:Statement = self_statement.substatement_pointers[0]
-	modifying.execute(gamestate)
+	await modifying.execute(gamestate)
 
 static func execute_and(gamestate:Game,self_statement:Statement): # return value depends on situation
 	var substatement_1:Statement = self_statement.substatement_pointers[0]
@@ -15,39 +15,48 @@ static func execute_and(gamestate:Game,self_statement:Statement): # return value
 			substatement_1.execute(gamestate)
 			substatement_2.execute(gamestate)
 		1: # target. these are arrays of coordinates, concatenate them and return
-			var vec1 = substatement_1.execute(gamestate)
-			var vec2 = substatement_2.execute(gamestate)
+			var vec1 = await substatement_1.execute(gamestate)
+			var vec2 = await substatement_2.execute(gamestate)
 			return vec1 + vec2
 		2: # effect. these return callables. construct a new callable which does both
 			# the arguments of the callables are the battlefield and the target positions
-			var func1 = substatement_1.execute(gamestate)
-			var func2 = substatement_2.execute(gamestate)
-			
-			var combined_function = func (battlefield,target_arrays):
-				func1.call(battlefield,target_arrays)
-				func2.call(battlefield,target_arrays)
-			
-			return combined_function
+			#var func1 = await substatement_1.execute(gamestate)
+			#var func2 = await substatement_2.execute(gamestate)
+			#
+			##var combined_function = func (battlefield,target_arrays):
+				##func1.call(battlefield,target_arrays)
+				##func2.call(battlefield,target_arrays)
+			#
+			#return func1 + func2
+			pass # handled through leaf effects
 		4: 
 			# not implemented
 			pass
 
 static func execute_spell1(gamestate:Game,self_statement:Statement) -> void:
-	var effect:Statement = self_statement.substatement_pointers[0]
+	var effects:Array[Statement] = self_statement.substatement_pointers[0].get_leaf_effects()
 	var target:Statement = self_statement.substatement_pointers[1]
 	
-	var target_spaces:Array[Vector2i] = target.execute(gamestate)
-	var effect_function:Callable = effect.execute(gamestate)
+	var target_spaces:Array[Vector2i] = await target.execute(gamestate)
+	var effect_functions:Array[Callable] = []
+	for effect in effects:
+		effect_functions.append(await effect.execute(gamestate))
 	
-	for target_position:Vector2i in target_spaces:
-		effect_function.call(gamestate.battlefield,target_position)
+	
+	for i in len(effects):
+		var effect = effects[i]
+		var effect_function = effect_functions[i]
+		for target_position:Vector2i in target_spaces:
+			gamestate.battlefield.play_effect_animation_at_position(effect,target_position)
+			effect_function.call(gamestate.battlefield,target_position)
+			await gamestate.get_tree().create_timer(1./len(target_spaces)/len(effects)).timeout
 
 static func execute_spell2(gamestate:Game,self_statement:Statement) -> void:
 	var effect:Statement = self_statement.substatement_pointers[0]
 	var target:Statement = self_statement.substatement_pointers[1]
 	
-	var target_spaces:Array[Vector2i] = target.execute(gamestate)
-	var effect_function:Callable = effect.execute(gamestate)
+	var target_spaces:Array[Vector2i] = await target.execute(gamestate)
+	var effect_function:Callable = await effect.execute(gamestate)
 	
 	for target_position:Vector2i in target_spaces:
 		effect_function.call(gamestate.battlefield,target_position)

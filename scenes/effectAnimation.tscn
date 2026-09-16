@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://c1yiewce7vb5u"]
+
+[ext_resource type="Texture2D" uid="uid://bnlacfaxnt6ci" path="res://0_assets/textures/effect_animations/magic_dart.png" id="1_3ioky"]
+[ext_resource type="Script" uid="uid://db2pcca1tdxgd" path="res://scripts/effect_animation.gd" id="2_3ioky"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tibmi"]
+atlas = ExtResource("1_3ioky")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_isi46"]
+atlas = ExtResource("1_3ioky")
+region = Rect2(50, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e6en5"]
+atlas = ExtResource("1_3ioky")
+region = Rect2(100, 0, 50, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_chlj7"]
+resource_local_to_scene = true
+animations = [{
+"frames": [],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_tibmi")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_isi46")
+}, {
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_e6en5")
+}],
+"loop": 1,
+"name": &"hit",
+"speed": 5.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" unique_id=1066802069]
+sprite_frames = SubResource("SpriteFrames_chlj7")
+animation = &"hit"
+script = ExtResource("2_3ioky")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

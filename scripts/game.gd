@@ -46,11 +46,10 @@ func start_turn() -> void:
 func end_turn() -> void:
 	var root_spell:Statement = card_manager.get_root_spell()
 	if root_spell.check_executable_recursively():
-		root_spell.execute(self)
+		await root_spell.execute(self)
 	
 	card_manager.reset_spell_blook()
 	card_manager.end_turn_card_management()
-	#why do dead entities still bite me?? also the round doesn't end until one turn too late
 	battlefield.end_of_turn_enitity_management()
 	if battlefield.is_empty():
 		end_round()
@@ -77,7 +76,6 @@ func _reset_board() -> void:
 	card_manager.reset_spell_blook()
 
 func generate_round_budget() -> int:
-	return 1
 	return floor(0.2*round_number*round_number + 0.5*round_number+4)
 
 func generate_enemy_set(budget:int) -> Array[String]:

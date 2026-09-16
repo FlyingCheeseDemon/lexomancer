@@ -8,6 +8,9 @@ class_name StatementData
 @export var artwork:Texture2D
 @export_multiline var card_text:String
 
+@export_category("Effect visuals")
+@export var animation:SpriteFrames
+
 @export_category("Function")
 @export var type:ENUMS.ST_TYPES
 @export_multiline var text:String

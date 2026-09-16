@@ -31,6 +31,16 @@ static func constructor(statement_data: StatementData, callable_generation_args:
 	obj.substatement_pointers.fill(null)
 	return obj
 
+func get_leaf_effects() -> Array[Statement]:
+	if self.data.type == ENUMS.ST_TYPES.EFFECT:
+		return [self]
+	elif self.data.type == ENUMS.ST_TYPES.CONJUNCTION:
+		var effects:Array[Statement] = []
+		for substatement in self.substatement_pointers:
+			effects += substatement.get_leaf_effects()
+		return effects
+	return []
+
 func set_substatement(statement:Statement,position:int) -> void:
 	assert(not self.substatement_pointers[position],\
 		"STATEMENT ERROR: Statement " + str(position) + " in " + self.data.title + " already set.")
@@ -68,7 +78,7 @@ func execute(game:Game): # the return type for this depends on the type
 			ENUMS.ST_TYPES.keys()[self.substatement_types[i]] + " and not " \
 			+ ENUMS.ST_TYPES.keys()[self.substatement_pointers[i].type])
 	
-	return self.execute_fnc.call(game,self)
+	return await self.execute_fnc.call(game,self)
 
 func check_executable_recursively() -> bool:
 	for substatement in substatement_pointers:
