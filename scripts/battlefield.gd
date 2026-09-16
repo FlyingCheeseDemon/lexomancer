@@ -40,7 +40,8 @@ func clear_field() -> void:
 func is_empty() -> bool:
 	for i in range(width):
 		for j in range(height):
-			if battlefield_grid[i][j]:
+			var entity = battlefield_grid[i][j] as Entity
+			if entity and entity.current_health > 0:
 				return false
 	return true
 
@@ -83,6 +84,8 @@ func end_of_turn_enitity_management() -> void:
 	# might make them smarter at some point
 	var enemies: Array[Entity] = get_enemies_in_action_order()
 	for enemy in enemies:
+		if enemy.current_health <= 0:
+			continue
 		if enemy.battle_position[1] != self.height-1:
 			if not coordinate_occupied(enemy.battle_position + Vector2i(0,1)):
 				var coordinate = enemy.battle_position
