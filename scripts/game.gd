@@ -10,6 +10,7 @@ class_name Game
 @onready var player_health_label:Label = $PlayerHealthLabel
 @onready var player:Player = $Player
 @onready var round_turn_label:Label = $RoundTurnLabel
+@onready var event_overlay:Node = $EventOverlayNode
 
 const scene = "res://scenes/game.tscn"
 
@@ -17,6 +18,12 @@ var round_number:int = 0
 var turn_number:int = 0
 var remaining_enemies:Array[String] = []
 var spawn_rate = 3
+var cards_to_draft = 3
+var draft_rarity_dict = {
+	ENUMS.ST_RARITIES.COMMON : 0.8,
+	ENUMS.ST_RARITIES.RARE: 0.15,
+	ENUMS.ST_RARITIES.VERY_RARE: 0.05
+}
 
 signal game_over
 
@@ -67,9 +74,19 @@ func start_round() -> void:
 func end_round() -> void:
 	_reset_board()
 	
+	var card_selection = CardDraft.constructor()
+	event_overlay.add_child(card_selection)
+	card_selection.connect("card_selected",_on_card_selected)
+	var cards_to_offer = generate_cards_to_offer()
+	for card in cards_to_offer:
+		card_selection.add_card(card)
 	# award cards here, any events
-	start_round() # for now
 
+func _on_card_selected(card:Card) -> void:
+	card_manager.deck.add_top_deck(card)
+	card_manager.deck.shuffle()
+	start_round() # for now
+	
 func _reset_board() -> void:
 	battlefield.clear_field()
 	card_manager.reset_deck()
@@ -90,6 +107,24 @@ func generate_enemy_set(budget:int) -> Array[String]:
 			index += 1
 	enemy_to_generate_list.reverse() # the easy enemies come first
 	return enemy_to_generate_list
+
+func generate_cards_to_offer() -> Array[Card]:
+	# player.type will eventually factor in here
+	var cards_to_offer:Array[Card] = []
+	var rng = RandomNumberGenerator.new()
+	for i in range(cards_to_draft):
+		var rarity_pull = rng.randf()
+		var rarity_to_give:ENUMS.ST_RARITIES
+		if rarity_pull < draft_rarity_dict[ENUMS.ST_RARITIES.COMMON]:
+			rarity_to_give = ENUMS.ST_RARITIES.COMMON
+		elif rarity_pull < draft_rarity_dict[ENUMS.ST_RARITIES.COMMON] + draft_rarity_dict[ENUMS.ST_RARITIES.RARE]:
+			rarity_to_give = ENUMS.ST_RARITIES.RARE
+		else:
+			rarity_to_give = ENUMS.ST_RARITIES.VERY_RARE
+		var options = statement_manager.get_valid_statements_for_offer(rarity_to_give)
+		var statement_to_offer = options.pick_random()
+		cards_to_offer.append(Card.from_statement(statement_to_offer))
+	return cards_to_offer
 
 func _on_end_turn_button_button_up() -> void:
 	end_turn()

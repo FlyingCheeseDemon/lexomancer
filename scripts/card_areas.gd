@@ -32,12 +32,12 @@ func _ready() -> void:
 		new_card = Card.from_statement(statement)
 		deck.add_top_deck(new_card)
 		
-	for i in range(1):
+	for i in range(4):
 		statement = statement_manager.get_statement_by_name("everything")
 		new_card = Card.from_statement(statement)
 		deck.add_top_deck(new_card)
 		
-	for i in range(3):
+	for i in range(5):
 		statement = statement_manager.get_statement_by_name("and")
 		new_card = Card.from_statement(statement)
 		deck.add_top_deck(new_card)
@@ -58,6 +58,7 @@ func reset_deck() -> void:
 		
 	while discard.get_length():
 		deck.add_top_deck(discard.draw())
+	deck.shuffle()
 
 func _input(event:InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT:

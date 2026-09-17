@@ -41,8 +41,8 @@ func get_sorted_entity_name_list_descending_danger_value() -> Array[String]:
 	entity_list.sort_custom(sort_entity_data_by_danger_value_descending)
 	return entity_list
 
-func get_enemies_danger_value_by_name(name:String) -> int:
+func get_enemies_danger_value_by_name(entity_name:String) -> int:
 	if len(entity_dictionary.keys()) == 0:
 		initialize_entity_dict();
-	var entity_data:EntityData = entity_dictionary[name]
+	var entity_data:EntityData = entity_dictionary[entity_name]
 	return entity_data.danger_value

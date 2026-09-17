@@ -29,3 +29,15 @@ func get_statement_by_name(key:String) -> Statement:
 	var statement = get_statement_data_by_name(key)
 	var statement_object := Statement.constructor(statement)
 	return statement_object
+
+func get_valid_statements_for_offer(rarity:ENUMS.ST_RARITIES) -> Array[Statement]:
+	if len(statement_dictionary.keys()) == 0:
+		initialize_statement_dict();
+	var statement_name_list:Array = statement_dictionary.keys().duplicate()
+	var statement_list:Array[Statement] = []
+	for i in range(len(statement_name_list)):
+		var statement = get_statement_by_name(statement_name_list[i])
+		if statement.data.rarity == rarity:
+			statement_list.append(statement)
+	
+	return statement_list

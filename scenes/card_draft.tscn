@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://uuqqlx5a2yt2"]
+
+[ext_resource type="Script" uid="uid://boxkeudahdpdy" path="res://scripts/card_draft.gd" id="1_whawf"]
+
+[node name="CardDraft" type="CanvasLayer" unique_id=1895052365]
+script = ExtResource("1_whawf")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=778061435]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.31, 0.31, 0.31, 0.54509807)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1379688253]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CenterContainer" unique_id=572930855]
+custom_minimum_size = Vector2(800, 400)
+layout_mode = 2
+color = Color(0.35311186, 0.359747, 0.5277081, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/ColorRect" unique_id=875480368]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/ColorRect/CenterContainer" unique_id=1337659225]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CenterContainer/ColorRect" unique_id=804856130]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 24
+text = "Pick a card to add to your deck"
+horizontal_alignment = 1

@@ -56,6 +56,8 @@ theme_override_font_sizes/font_size = 30
 text = "Round: 0
 Turn: 0"
 
+[node name="EventOverlayNode" type="Node" parent="." unique_id=1525263624]
+
 [connection signal="cell_clicked" from="Battlefield" to="." method="_on_battlefield_cell_clicked"]
 [connection signal="player_attacked" from="Battlefield" to="." method="_on_battlefield_player_attacked"]
 [connection signal="button_up" from="EndTurnButton" to="." method="_on_end_turn_button_button_up"]
